@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "cdfddc9f-26cc-4680-99d1-a2114a967f04",
+		"name": "Final task neobis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "For new users",
+			"item": [
+				{
+					"name": "/register/",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"username\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						},
+						"description": "This request allows you to register.\r\n\r\nYou need to add your username and password."
+					},
+					"response": []
+				},
+				{
+					"name": "/api/token/",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"username\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/token/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"token",
+								""
+							]
+						},
+						"description": "This request allows you to get your acces and refresh token.\n\n###### Access token expires in 5 minutes.\n\nThe access token allows you to use requests that require authorization\n\n###### Refresh token expires in 24 hours.\n\nThe refresh token allows you to create new access token"
+					},
+					"response": []
+				},
+				{
+					"name": "/api/token/refresh/",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\" : your_refresh_roken\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/token/refresh/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"token",
+								"refresh",
+								""
+							]
+						},
+						"description": "This request allows you to get a new access token using the refresh token"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "For customers",
+			"item": [
+				{
+					"name": "/products/",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/products/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						},
+						"description": "This request allows you to get list of products as a json."
+					},
+					"response": []
+				},
+				{
+					"name": "products/<product_id>/comments/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{base_url}}/products/5/comments/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"5",
+								"comments",
+								""
+							]
+						},
+						"description": "This request allows you to see what comments are left under the product\n\n5 is id of this product"
+					},
+					"response": []
+				},
+				{
+					"name": "/products/<product_id>/comments/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"comment\":{\r\n    \"rate\": 5,\r\n    \"content\": \"text of comment\"\r\n}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/5/comments/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"5",
+								"comments",
+								""
+							]
+						},
+						"description": "This request allows you to create comment under the product\n\n5 is id of this product"
+					},
+					"response": []
+				},
+				{
+					"name": "/products/<product_id>/addtocart/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"cartitem\" : {\r\n    \"quantity\" : 5\r\n}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/5/addtocart/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"5",
+								"addtocart",
+								""
+							]
+						},
+						"description": "This request allows you to add product with id 5 to your shopping cart\n\nYou need to specify quantity of products"
+					},
+					"response": []
+				},
+				{
+					"name": "/cart/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cart/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart",
+								""
+							]
+						},
+						"description": "This request allows you to get a list of the products in your shopping cart"
+					},
+					"response": []
+				},
+				{
+					"name": "/cart/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"credit_card\" : \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/cart/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cart",
+								""
+							]
+						},
+						"description": "This request allows you to buy all the items in the cart\r\nYou need to provide your credit card number"
+					},
+					"response": []
+				},
+				{
+					"name": "/history/",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/history/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"history",
+								""
+							]
+						},
+						"description": "This request allows you to get a list of your purchases"
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all the requests necessary for customers"
+		},
+		{
+			"name": "For suppliers",
+			"item": [
+				{
+					"name": "/products/",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"product\":\r\n        {\r\n            \"title\": \"test3\",\r\n            \"description\": \"test\",\r\n            \"price\": 45000,\r\n            \"discount\": 20,\r\n            \"category\": \"top\"\r\n        }}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/products/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/products/<product_id>/addimage/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/products/5/addimage/",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"products",
+								"5",
+								"addimage",
+								""
+							]
+						},
+						"description": "This request allows you to add new images to your product.\r\nYou need to be supplier of this product to add images.\r\nImages can only be added after the product has been created"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.sendRequest({",
+					"    url: 'http://127.0.0.1:8000/api/token/',",
+					"    method: 'POST',",
+					"    header: {",
+					"        'content-type': 'application/json'",
+					"    },",
+					"    body: {",
+					"        mode: 'raw',",
+					"        raw: JSON.stringify({",
+					"            username: 'user',",
+					"            password: 'user'})",
+					"    }",
+					"}, (err, res) => pm.collectionVariables.set(\"TOKEN\", res.json().access));"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TOKEN",
+			"value": null
+		},
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000"
+		}
+	]
+}
